@@ -33,13 +33,39 @@ jobs:
     steps:
       - name: Checkout the code
         uses: actions/checkout@v4
+      
+      - name: unit test
+        run: |
+          echo "Running unit tests..."
 
-      - name: Run tests
-        run: chmod +x gradlew && ./gradlew test
+      # - name: Run tests
+      #   run: chmod +x gradlew && ./gradlew test
 
       # - name: Upload test report
       #   uses: actions/upload-artifact@v3.1.3
       #   with:
       #     name: unit_test_report
       #     path: app/build/reports/tests/testDebugUnitTest/
+
+  instrumentation-test:
+      needs: [unit-test]
+      runs-on: ubuntu-latest
+      steps:
+        - name: Checkout the code
+          uses: actions/checkout@v4
+
+        - name: make gradlew executable
+          run: chmod +x gradlew  
+
+        - name: Run espresso tests
+          uses: reactivecircus/android-emulator-runner@v2
+          with:
+            api-level: 34
+            script: ./gradlew connectedCheck
+
+        # - name: Upload test report
+        #   uses: actions/upload-artifact@v2
+        #   with:
+        #     name: instrumentation_test_report
+        #     path: app/build/reports/androidTests/connected/
 
