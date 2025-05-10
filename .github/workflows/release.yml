@@ -1,5 +1,4 @@
 name: CI
-
 on:
   push:
     branches: [ main ]
@@ -16,8 +15,8 @@ jobs:
       - name: Run lint
         run: ./gradlew lintDebug
 
-      - name: Upload html test report
-        uses: actions/upload-artifact@v3.1.4
-        with:
-          name: lint.html
-          path: app/build/reports/lint-results-debug.html
+      # - name: Upload html test report
+      #   uses: actions/upload-artifact@v3
+      #   with:
+      #     name: lint.html
+      #     path: app/build/reports/lint-results-debug.html 
