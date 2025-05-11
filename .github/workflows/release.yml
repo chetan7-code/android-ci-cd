@@ -76,7 +76,7 @@ jobs:
         #     name: instrumentation_test_report
         #     path: app/build/reports/androidTests/connected/
   static-code-analysis:
-        # needs: [instrumentation-test]
+        needs: [instrumentation-test]
         runs-on: ubuntu-latest
         steps:
           - name: Checkout the code
@@ -89,8 +89,8 @@ jobs:
               java-version: '17'
 
           - name: SonarCloud Scan
-            run: chmod +x gradlew && ./gradlew app:sonarqube -Dsonar.login=${{ secrets.ANDROID_CODE_CHECK }}
+            run: chmod +x ./gradlew && ./gradlew sonarqube -Dsonar.login=${{ secrets.ANDROID_CODE_CHECK }}
             env:
-              GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Automatically provided by GitHub
+               GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 
