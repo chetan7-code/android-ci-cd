@@ -83,4 +83,4 @@
     paparazzi = { id = "app.cash.paparazzi", version.ref = "paparazziVersion" }
     parcelable = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = "kotlinVersion" }
     sql-delight = { id = "app.cash.sqldelight", version.ref = "sqlDelightVersion" }
-    sonarqube = { id = "org.sonarqube", version = "4.4.1.3373" }
+    google-services = { id = "com.google.gms.google-services", version = "4.4.2" }

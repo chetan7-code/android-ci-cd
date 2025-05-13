@@ -9,5 +9,5 @@ plugins {
     alias(libs.plugins.parcelable) apply false
     alias(libs.plugins.paparazzi) apply false
     alias(libs.plugins.sql.delight) apply false
-    alias(libs.plugins.sonarqube)
+    alias(libs.plugins.google.services) apply false
 }
